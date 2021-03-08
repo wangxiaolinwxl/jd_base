@@ -40,13 +40,16 @@ else
   ShellURL=https://gitee.com/evine/jd-base
 fi
 
+ScriptsURL=https://gitee.com/jk9527/jd_scripts
+
 ## 更新shell脚本
 function Git_PullShell {
   echo -e "更新shell脚本，原地址：${ShellURL}\n"
   cd ${ShellDir}
   git fetch --all
+  git pull
   ExitStatusShell=$?
-  git reset --hard origin2/master
+  git reset --hard origin/master
 }
 
 ## 更新crontab
@@ -69,9 +72,10 @@ function Git_CloneScripts {
 function Git_PullScripts {
   echo -e "更新LXK9301脚本，原地址：${ScriptsURL}\n"
   cd ${ScriptsDir}
-  git fetch --all
-  ExitStatusScripts=$?
   git reset --hard
+  git fetch --all
+  git pull
+  ExitStatusScripts=$?
   echo
 }
 
@@ -87,9 +91,10 @@ function Git_CloneScripts2 {
 function Git_PullScripts2 {
   echo -e "更新shylocks脚本，原地址：${Scripts2URL}\n"
   cd ${Scripts2Dir}
+  git reset --hard
   git fetch --all
+  git pull
   ExitStatusScripts2=$?
-  git reset --hard origin2/master
   echo
 }
 
